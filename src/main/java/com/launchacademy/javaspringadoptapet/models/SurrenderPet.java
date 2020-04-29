@@ -54,7 +54,4 @@ public class SurrenderPet {
   @Column(name="vaccination_status")
   private Boolean vaccinationStatus;
 
-  @Column(name="application_status")
-  private String applicationStatus;
-
 }

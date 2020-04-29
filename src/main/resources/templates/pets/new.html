@@ -1,0 +1,48 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+<form action="#" th:action="@{/pets}" th:object="${pet}" method="POST">
+
+  <div class="small-12 medium-6 columns">
+    <label th:for="name">Name</label>
+    <input th:field="*{name}" type="text" />
+  </div>
+  <div class="small-12 medium-6 columns">
+    <label th:for="phoneNumber">Phone Number</label>
+    <input th:field="*{phoneNumber}" type="text" />
+  </div>
+  <div class="small-12 medium-6 columns">
+    <label th:for="email">E-mail</label>
+    <input th:field="*{email}" type="text" />
+  </div>
+  <div class="small-12 medium-6 columns">
+    <label th:for="petName">Pet Name</label>
+    <input th:field="*{petName}" type="text"/>
+  </div>
+  <div class="small-12 medium-6 columns">
+    <label th:for="petAge">Pet Age</label>
+    <input th:field="*{petAge}" type="number" />
+  </div>
+  <div class="small-12 medium-6 columns">
+    <label th:for="petTypeId">Pet Type</label>
+    <select th:field="*{petTypeId}">
+      <option th:value="1">Dog</option>
+      <option th:value="2">Cat</option>
+    </select>
+  </div>
+  <div class="small-12 medium-6 columns">
+    <label th:for="petImageUrl">Pet Image</label>
+    <input th:field="*{petImageUrl}" type="text" />
+  </div>
+  <div class="small-12 medium-6 columns">
+    <label th:for="vaccinationStatus">Vaccination Status</label>
+    <select th:field="*{vaccinationStatus}">
+      <option th:value="true">Vaccinated</option>
+      <option th:value="false">Not vaccinated</option>
+    </select>
+  </div>
+  <div class="small-12 columns">
+    <input name="button" type="submit" class="button" />
+  </div>
+</form>
+
+</body>
