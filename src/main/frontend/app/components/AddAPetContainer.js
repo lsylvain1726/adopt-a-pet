@@ -8,7 +8,7 @@ const AddAPetContainer = props => {
   const addNewForm = formPayload => {
     fetch(`/api/v1/surrender_pets`, {
       method: "POST",
-      body: JSON.stringify(pet),
+      body: JSON.stringify(formPayload),
       headers: { "Content-Type": "application/json" }
     })
     .then(response => {
@@ -21,12 +21,7 @@ const AddAPetContainer = props => {
       }
     })
     .then(response => {
-      return response.json()
-    }).then(json => {
-      setPet([
-        ...pet,
-        json
-      ])
+      response.json()
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }

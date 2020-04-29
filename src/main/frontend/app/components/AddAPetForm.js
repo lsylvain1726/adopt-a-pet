@@ -1,6 +1,29 @@
-import React, {useState, Fragment} from "react"
+import React, {useState, useEffect, Fragment} from "react"
 
 const AddAPetForm = (props) => {
+
+  const [petTypes, setPetTypes] = useState([])
+
+  useEffect(() => {
+    fetch(`/api/v1/pet_types`)
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else{
+        let errorMessage = `${response.status} (${response.statusText})`, 
+          error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      setPetTypes(body)
+    })
+    .catch(error => {
+      error => console.error(`Error in fetch: ${error.message}`)
+    })
+  }, [])
+
   const defaultForm =  {
     name: "",
     phoneNumber: "",
@@ -15,6 +38,15 @@ const AddAPetForm = (props) => {
 
   const [newPet, setNewPet] = useState(defaultForm)
   const [message, setMessage] = useState("")
+  
+  let typeId
+  if (newPet.petTypeId === "1") {
+    typeId = 1
+  } else {
+    typeId = 2
+  }
+
+  let petType = petTypes.find(pet => pet.id === typeId)
 
   const handleChange = event => {
     setNewPet({
@@ -26,27 +58,22 @@ const AddAPetForm = (props) => {
   const handleSubmit = event => {
 
     event.preventDefault()
+    const isVaccinated = (newPet.vaccinationStatus === "true")
 
-    // let petTypeID
-    // if (newPet.petTypeId === "1") {
-    //   petTypeID = 1
-    // } else {
-    //   petTypeID = 2
-    // }
 
-    // let formPayload = {
-    //   name: newPet.name,
-    //   phoneNumber: newPet.phoneNumber,
-    //   email: newPet.email,
-    //   petName: newPet.petName,
-    //   petAge: newPet.petAge,
-    //   petTypeId: petTypeID,
-    //   petImageUrl: newPet.petImageUrl,
-    //   vaccinationStatus: newPet.vaccinationStatus,
-    //   applicationStatus: "pending"
-    // }
+    let formPayload = {
+      name: newPet.name,
+      phoneNumber: newPet.phoneNumber,
+      email: newPet.email,
+      petName: newPet.petName,
+      petAge: newPet.petAge,
+      petType: petType,
+      petImageUrl: newPet.petImageUrl,
+      vaccinationStatus: isVaccinated,
+      applicationStatus: "pending"
+    }
         
-    props.addNewForm(newPet)
+    props.addNewForm(formPayload)
     props.setShowForm(false)
     setNewPet(defaultForm)
     // setMessage("Thank you for your form submission. Your surrender request is in process and someone from our team will reach out to you shortly")
@@ -125,6 +152,7 @@ const AddAPetForm = (props) => {
             <div className="small-12 medium-6 columns">
               <label htmlFor="petTypeId">Pet Type</label>
               <select name="petTypeId" id="petTypeId" onChange={handleChange} value={newPet.petTypeId}>
+                <option value="">-</option>
                 <option value="1">Dog</option>
                 <option value="2">Cat</option>
               </select>

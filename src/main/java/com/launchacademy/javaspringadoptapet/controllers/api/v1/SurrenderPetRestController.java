@@ -2,6 +2,7 @@ package com.launchacademy.javaspringadoptapet.controllers.api.v1;
 
 import com.launchacademy.javaspringadoptapet.models.SurrenderPet;
 import com.launchacademy.javaspringadoptapet.repositories.SurrenderPetRepository;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -56,7 +57,7 @@ public class SurrenderPetRestController {
   }
 
   @PostMapping
-  public SurrenderPet create(@RequestBody @ModelAttribute SurrenderPet surrenderPet, BindingResult bindingResult) {
+  public SurrenderPet create(@RequestBody @Valid SurrenderPet surrenderPet, BindingResult bindingResult) {
     if(bindingResult.hasErrors()) {
       throw new InvalidSurrenderException();
     } else {

@@ -1,0 +1,425 @@
+/* your styles, here */
+
+.span-block {
+  display: block;
+}
+
+h2 {
+  color: #2f2fa2;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+
+/* Button */
+
+.button {
+  background-color: #f64c72;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #2f2fa2;
+}
+
+
+/* TopBar */
+
+.wrapper-topbar {
+  border-top: 4px solid #2f2fa2;
+  box-shadow: 0 8px 6px -6px #999;
+  z-index: 99;
+}
+
+.top-bar {
+  padding: 1.5rem .5rem;
+}
+
+.top-bar ul {
+  background-color: #fff;
+}
+
+.wrapper-topbar .top-bar {
+  background-color: #fff;
+}
+
+.top-bar-left img {
+  max-height: 90px;
+}
+
+.top-bar-right {
+  margin-top: 2.6rem;
+  padding-right: 3.75rem;
+}
+
+.top-bar-right .menu>li>a {
+  padding: .7rem 1.5rem;
+  font-size: 1.125rem;
+  color: #333;
+}
+
+.title-bar {
+  position: absolute;
+  right: 0;
+  background-color: #2f2fa2;
+  padding: .5rem 1rem;
+}
+
+/* Mobile Navigation */
+
+/* Medium and down */
+@media screen and (max-width: 63.9375em) {
+
+  .top-bar-right,
+  .top-bar-left {
+    float: none;
+  }
+
+  .top-bar-right {
+    padding-right: 0;
+    margin-right: -1.4375rem;
+    margin-left: -1.4375rem;
+    margin-bottom: -1.5rem;
+  }
+
+  .top-bar .top-bar-right {
+    width: auto;
+  }
+
+  .top-bar ul {
+    background-color: #2f2fa2;
+  }
+
+  .top-bar-right .menu>li>a {
+    color: #fff;
+  }
+
+  .menu>li {
+    display: block;
+    border-bottom: 1px solid #fff;
+    text-align: center;
+  }
+
+  .menu>li:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Hero Header */
+
+.hero-header {
+  position: relative;
+  text-align:center;
+}
+
+.hero-img {
+  position: relative;
+}
+
+.hero-img img {
+  width: 100%;
+}
+
+.hero-img:before {
+  content: "";
+  position: absolute;
+  left: 0; 
+  right: 0;
+  top: 0; 
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+}
+
+.hero-caption {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero-caption h2 {
+  font-size: 2rem;
+  color: #f64c72;
+}
+
+.hero-caption p {
+  color: #fff;
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+
+  .hero-caption {
+    left: 150px;
+    right: 150px;
+  }
+
+  .hero-caption h2 {
+    font-size: 4rem
+  }
+}
+
+/* Home Page - Animal Card */
+
+.wrapper-animal {
+  padding: 3.25rem;
+  text-align: center;
+}
+
+.wrapper-animal-title {
+  display: block;
+  position: relative;
+  margin-bottom: 1rem;
+  padding-bottom: .625rem;
+}
+
+.card-animal-subtitle {
+  display: block;
+  color: #2f2fa2;
+}
+
+.wrapper-title-animal:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: -5px;
+  bottom: -4px;
+  background: #535353;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.wrapper-animal-title:after {
+  content: "";
+  border-bottom: 1px solid #f64c72;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 0;
+  width: 25%;
+}
+
+.card-animal {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
+  margin-bottom: 2rem;
+}
+
+.card-animal img {
+  width: 100%;
+}
+
+.card-animal-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+.card-animal-title {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.card-animal-subtitle {
+  color: #333;
+}
+
+.button-card-animal {
+  background-color: transparent;
+  color: #2f2fa2;
+  border: 4px solid #f64c72;
+  margin-top: 1rem;
+}
+
+.button-card-animal:hover,
+.button-card-animal:focus {
+  background-color: #fff;
+  color: #f64c72;
+  border: 4px solid #2f2fa2;
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+  .wrapper-animal-title {
+    margin-bottom: 3rem;
+  }
+}
+
+/* Individual Pet Page */
+
+.wrapper-interior-header {
+  position: relative;
+  z-index: -1;
+  min-height: 100px;
+}
+
+.wrapper-dog {
+  background: #eee url(http://localhost:8080/static/images/dog-peek600.png) no-repeat 95% 100%;
+}
+
+.wrapper-cat {
+  background: #eee url(http://localhost:3000/assets/images/cat-header.png) no-repeat 95% 100%;
+}
+
+.wrapper-interior-animal {
+  background: #eee url(http://localhost:8080/static/images/animal-header600.png) no-repeat 95% 20%;
+}
+
+.wrapper-dog,
+.wrapper-cat,
+.wrapper-interior-animal {
+  background-size: 40%;
+}
+
+.pet-header-title {
+  position: absolute;
+  color: #2f2fa2;
+  top: 50%;
+  transform: translateY(-50%);
+  text-transform: capitalize;
+}
+
+.wrapper-individual-pet {
+  padding: 3.75rem;
+}
+
+.card-pet-info {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.list-pet-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-pet-info img{
+  margin-bottom: 1rem;
+}
+
+.pet-info-title {
+  font-weight: 700;
+  color: #242582;
+}
+
+.button-wrapper {
+  margin-top: 1rem;
+}
+
+.button-wrapper .button {
+  width: 30%;
+}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {
+  .wrapper-interior-header {
+    min-height: 150px;
+  }
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+  .wrapper-interior-header {
+    min-height: 200px;
+  }
+
+  .wrapper-dog,
+  .wrapper-cat,
+  .wrapper-interior-animal {
+    background-size: 45%;
+  }
+}
+
+/* Add A Pet Form */
+
+.add-a-pet-form {
+  margin-top: 1.5rem;
+  color: #2f2fa2;
+}
+
+.surrender-pet-info {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  padding: 1.5rem 0 0;
+}
+
+/* Adoption Form */
+
+.adoption-form {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #2f2fa2;
+}
+
+.adoption-form .button-submit {
+  display: block;
+  margin: 0 auto;
+}
+
+.form-submission-message {
+  text-align: center;
+  font-size: 2rem;
+  color: #2f2fa2;
+  padding: 2rem;
+}
+
+/* Pet Type Page Cards */
+
+.wrapper-pettypes {
+  padding: 3.75rem 0;
+}
+
+
+.list-pettype-info {
+  list-style: none;
+  margin: 0;
+}
+
+.list-pettype-info li {
+  margin-right: .625rem
+}
+
+.card-pet {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card-pet-header img{
+  max-height: 215px;
+  width: 100%;
+}
+
+.card-pet-body {
+  padding: .625rem;
+}
+
+.card-pet-footer {
+  padding: 1rem;
+  font-size: 20px;
+}
+
+.card-pet-footer a:after {
+  font-family: fontAwesome;
+  content: '\f0da';
+  margin-left: .625rem;
+}
+
+/* Footer */
+
+footer {
+  background-color: #2f2fa2;
+  color: #fff;
+  text-align: center;
+  padding: 1.25rem;
+}
+
+footer p {
+  margin-bottom: 0;
+}
