@@ -3,6 +3,7 @@ import { Route, Link, Switch, BrowserRouter } from "react-router-dom";
 import PetTypesShowContainer from "./PetTypesShowContainer"
 import AdoptablePetsShowContainer from "./AdoptablePetsShowContainer"
 import IndividualPetShowContainer from "./IndividualPetShowContainer"
+import AddAPetContainer from "./AddAPetContainer"
 
 const NavBar = (props) => {
   return(
@@ -20,6 +21,7 @@ const NavBar = (props) => {
                 <Link to="/pets">Pets</Link>
                 <li><Link to="/pets/dog">Dogs</Link></li>
                 <li><Link to="/pets/cat">Cats</Link></li>
+                <li><a href="/adoptions/new">Surrender Application</a></li>
               </div>
 
             
@@ -37,6 +39,7 @@ const NavBar = (props) => {
         <Route exact path="/pets" component={PetTypesShowContainer} />
         <Route exact path="/pets/:type" component={AdoptablePetsShowContainer} />
         <Route exact path="/pets/:animalType/:id" component={IndividualPetShowContainer}/>
+        <Route exact path="/adoptions/new" component={AddAPetContainer} />
         
       </Switch>
      

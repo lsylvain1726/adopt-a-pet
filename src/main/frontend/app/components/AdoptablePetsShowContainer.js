@@ -24,13 +24,21 @@ const AdoptablePetsShowContainer = (props) => {
     .catch(error => {
       error => console.error(`Error in fetch: ${error.message}`)
     })
-  }, [])
+  }, [petType])
 
   const listAdoptablePets = adoptablePets.map((pet) => {
+    let vaccinationStatus = ""
+    if (pet.vaccinationStatus === true) {
+      vaccinationStatus = "Vaccinated"
+    } else {
+      vaccinationStatus = "Not vaccinated"
+    }
+
     return(
       <AdoptablePetsShow
         key={pet.id}
         pet={pet}
+        vaccinationStatus={vaccinationStatus}
       />
     )
   })

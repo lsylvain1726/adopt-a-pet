@@ -13,7 +13,7 @@ const AdoptablePetsShow = (props) => {
           <h2>{pet.name}</h2>
           <ul className="list-pettype-info">
             <li>Age: {pet.age}</li>
-            <li>{pet.vaccinationStatus}</li>
+            <li>{props.vaccinationStatus}</li>
           </ul>
         </div>
         <div className="card-pet-footer">
