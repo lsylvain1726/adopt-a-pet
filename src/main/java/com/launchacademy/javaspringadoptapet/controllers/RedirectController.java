@@ -2,6 +2,7 @@ package com.launchacademy.javaspringadoptapet.controllers;
 
     import com.launchacademy.javaspringadoptapet.models.SurrenderPet;
     import com.launchacademy.javaspringadoptapet.repositories.SurrenderPetRepository;
+    import javax.servlet.http.HttpServletRequest;
     import javax.validation.Valid;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Controller;
@@ -11,37 +12,33 @@ package com.launchacademy.javaspringadoptapet.controllers;
     import org.springframework.web.bind.annotation.ModelAttribute;
     import org.springframework.web.bind.annotation.PostMapping;
     import org.springframework.web.bind.annotation.RequestMapping;
+    import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class PetTypeController {
+public class RedirectController {
 
-    private SurrenderPetRepository surrenderPetRepo;
-
-    @Autowired
-    public void setSurrenderPetRepo(SurrenderPetRepository surrenderPetRepo) {
-        this.surrenderPetRepo = surrenderPetRepo;
+    @GetMapping("/pets")
+    public String index() {
+        return "index";
     }
+
+//    @RequestMapping(value = "/", method = RequestMethod.GET)
+//    public String redirect() {
+//        System.out.println("Redirecting Result To The Final Page");
+//        return "redirect:pets";
+//    }
+//
+//    @RequestMapping(value = "/pets", method = RequestMethod.GET)
+//    public String finalPage() {
+//        System.out.println("Showing The Redirected Page");
+//        return "index";
+//    }
 
     @GetMapping(value = "/**/{path:[^\\.]*}")
     public String forward() {
         return "forward:/";
     }
 
-//    @GetMapping("/pets/new")
-//    public String addSong(Model model) {
-//        SurrenderPet petSurrender = new SurrenderPet();
-//        model.addAttribute("pet", petSurrender);
-//        return "pets/new";
-//    }
-//
-//    @PostMapping
-//    public String postSong(@ModelAttribute @Valid SurrenderPet surrenderPet, BindingResult bindingResult, Model model) {
-//        if(bindingResult.hasErrors()) {
-//            return "pets/new";
-//        } else {
-//            surrenderPetRepo.save(surrenderPet);
-//            return "redirect:/pets";
-//        }
-//    }
+
 
 }

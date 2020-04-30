@@ -7,15 +7,13 @@ const PetTypesShow = (props) => {
   <div className="small-12 medium-6 columns">
     <div className="card-animal">
       <div className="card-animal-body">
-        {/* <Link to={`/pets/${petType.type}`}>
+        <Link to={`/pets/${petType.type}`}>
             <img src={props.petImage} alt={petType.type} /> 
-        </Link> */}
+        </Link>
         <Link className="button button-card-animal" to={`/pets/${petType.type}`}>
             <span className="card-animal-title">Meet Our <span className="capitalize">{petType.type}s</span></span>   
             <span className="card-animal-subtitle">{petType.description}</span>
         </Link>
-        <span className="card-animal-title">Meet Our <span className="capitalize">{petType.type}s</span></span>   
-        <span className="card-animal-subtitle">{petType.description}</span>
       </div>
     </div>
   </div>  

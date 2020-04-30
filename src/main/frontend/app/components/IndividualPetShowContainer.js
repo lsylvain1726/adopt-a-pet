@@ -6,6 +6,8 @@ const IndividualPetShowContainer = (props) => {
 
   const [individualPet, setIndividualPet] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [showForm, setShowForm] = useState(false)
+
   const petId = props.match.params.id
   const animalType = props.match.params.animalType
 
@@ -31,6 +33,10 @@ const IndividualPetShowContainer = (props) => {
 
   if(shouldRedirect) {
     return <Redirect to="/pets" />
+  }
+
+  let adoptMeClicked = () => {
+    setShowForm(true)
   }
 
   return(

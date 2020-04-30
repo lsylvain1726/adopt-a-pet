@@ -42,12 +42,24 @@ const AdoptablePetsShowContainer = (props) => {
       />
     )
   })
+
+  let imageClassHeader = ""
+  if (petType === "dog") {
+    imageClassHeader = "dog"
+  } else if (petType === "cat") {
+    imageClassHeader = "cat"
+  } else {
+    imageClassHeader = ""
+  }
+  
   return(
     <Fragment>
+     <div className={`wrapper-interior-header wrapper-${imageClassHeader}`}>
       <div className="row">
         <div className="small-12 columns">
           <h1 className="pet-header-title">Meet Our {petType}s</h1>
         </div>
+      </div>
       </div>
       <div className="wrapper-pettypes">
         <div className="row">

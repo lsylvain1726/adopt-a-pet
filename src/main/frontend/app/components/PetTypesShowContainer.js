@@ -1,6 +1,6 @@
 import React, {useState, useEffect, Fragment} from 'react';
 import PetTypesShow from "./PetTypesShow"
-import AddAPetForm from "./AddAPetForm"
+import HeroHeader from "./HeroHeader"
 
 const PetTypesShowContainer = (props) => {
   const [petTypes, setPetTypes] = useState([])
@@ -27,8 +27,16 @@ const PetTypesShowContainer = (props) => {
 
   const listPetTypes = petTypes.map((petType) => {
 
+    let petImage 
+    if (petType.type === "dog") {
+      petImage = "http://localhost:8080/image/doogle-home.jpg"
+    } else {
+      petImage ="http://localhost:8080/image/kitten-home.jpg" 
+    }
+
     return(
       <PetTypesShow
+        petImage={petImage}
         key={petType.id}
         petType={petType}
       />
@@ -37,6 +45,7 @@ const PetTypesShowContainer = (props) => {
 
   return(
     <Fragment>
+      <HeroHeader />
       <div className="wrapper-animal">
         <div className="row">
           <div className="small-12 columns">

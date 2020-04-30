@@ -258,15 +258,15 @@ h2 {
 }
 
 .wrapper-dog {
-  background: #eee url(http://localhost:8080/static/images/dog-peek600.png) no-repeat 95% 100%;
+  background: #eee url(http://localhost:8080/image/dog-peek600.png) no-repeat 95% 100%;
 }
 
 .wrapper-cat {
-  background: #eee url(http://localhost:3000/assets/images/cat-header.png) no-repeat 95% 100%;
+  background: #eee url(http://localhost:8080/image/cat-header.png) no-repeat 95% 100%;
 }
 
 .wrapper-interior-animal {
-  background: #eee url(http://localhost:8080/static/images/animal-header600.png) no-repeat 95% 20%;
+  background: #eee url(http://localhost:8080/image/animal-header600.png) no-repeat 95% 20%;
 }
 
 .wrapper-dog,

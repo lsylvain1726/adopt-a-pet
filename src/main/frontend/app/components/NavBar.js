@@ -18,16 +18,16 @@ const NavBar = (props) => {
           <div className="row">
             <div className="small-12 columns">
               <div className="top-bar-left">
-                <Link to="/pets">Pets</Link>
-                <li><Link to="/pets/dog">Dogs</Link></li>
-                <li><Link to="/pets/cat">Cats</Link></li>
-                <li><a href="/adoptions/new">Surrender Application</a></li>
+                <Link to="/pets"><img src="http://localhost:8080/image/fluffy-logo.png" alt="Fluffy Meets Cuddles Logo"/></Link>
               </div>
 
             
               <div className="top-bar-right" id="responsive-menu">
               <ul className="dropdown menu" data-dropdown-menu>
                   <li><Link to="/pets">Home</Link></li>
+                  <li><Link to="/pets/dog">Dogs</Link></li>
+                  <li><Link to="/pets/cat">Cats</Link></li>
+                  <li><a href="/adoptions/new">Surrender Application</a></li>
                 </ul>
               </div>
             </div>

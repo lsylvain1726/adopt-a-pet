@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
-import NavBar from "./NavBar"
 import { Route, Switch, BrowserRouter } from "react-router-dom"
+import Footer from "./Footer"
+import NavBar from "./NavBar"
 
 const App = (props) => {
   return (
@@ -8,6 +9,7 @@ const App = (props) => {
       <BrowserRouter>
         <Route path="/" component={NavBar} />
       </BrowserRouter>
+      <Footer />
     </Fragment>
   )
 }
