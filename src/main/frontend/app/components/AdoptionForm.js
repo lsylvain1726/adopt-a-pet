@@ -4,13 +4,34 @@ import _ from 'lodash'
 
 const AdoptionForm = (props) => {
 
+  const addNewPet = formPayload => {
+    fetch(`/api/v1/adoption_applications`, {
+      method: "POST",
+      body: JSON.stringify(formPayload),
+      headers: { "Content-Type": "application/json" }
+    })
+    .then(response => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage)
+        throw error
+      }
+    })
+    .then(response => {
+      response.json()
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
   const defaultPetSubmitted = {
     name: "",
     phoneNumber: "",
     email: "",
     homeStatus: "",
     applicationStatus: "",
-    petId: ""
+    adoptablePet: ""
   }
 
   const [petSubmitted, setPetSubmitted] = useState(defaultPetSubmitted)
@@ -50,14 +71,13 @@ const AdoptionForm = (props) => {
       email: petSubmitted.email,
       homeStatus: petSubmitted.homeStatus,
       applicationStatus: "pending",
-      petId: props.pet.id
+      adoptablePet: props.pet
     }
-
-   
-      props.addNewPet(formPayload)
-      setMessage("Thank you for your adoption request. Your Request is in Process and someone from our team will reach out to you shortly")
-      props.setShowForm(false)
-      clearPetAdoptionForm()
+    
+    addNewPet(formPayload)
+    setMessage("Thank you for your adoption request. Your Request is in Process and someone from our team will reach out to you shortly")
+    props.setShowForm(false)
+    clearPetAdoptionForm()
     
   }
 

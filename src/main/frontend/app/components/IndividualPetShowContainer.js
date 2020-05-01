@@ -6,7 +6,6 @@ import NotFound from "./NotFound"
 const IndividualPetShowContainer = (props) => {
 
   const [individualPet, setIndividualPet] = useState({})
-  const [shouldRedirect, setShouldRedirect] = useState(false)
   const [notFound, setNotFound] = useState(false)
   const [showForm, setShowForm] = useState(false)
 
