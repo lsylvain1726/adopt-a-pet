@@ -13,17 +13,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class PetTypeSeeder implements CommandLineRunner {
   private PetTypeRepository petTypeRepo;
-
-  @Autowired
-  public void setPetTypeRepo(PetTypeRepository petTypeRepo) {
-    this.petTypeRepo = petTypeRepo;
-  }
-
   private AdoptablePetRepository adoptablePetRepo;
 
   @Autowired
-  public void setAdoptablePetRepository(AdoptablePetRepository adoptablePetRepo) {
+  public void setAdoptablePetRepository(AdoptablePetRepository adoptablePetRepo, PetTypeRepository petTypeRepo) {
     this.adoptablePetRepo = adoptablePetRepo;
+    this.petTypeRepo = petTypeRepo;
   }
 
   @Override
