@@ -57,7 +57,6 @@ public class AdoptablePet {
   @Column(name="adoption_status")
   @NotBlank
   private String adoptionStatus;
-
 }
 
 

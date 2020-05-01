@@ -62,9 +62,9 @@ const AddAPetForm = (props) => {
       }
     })
   
-      setErrors(submitErrors)
-      return _.isEmpty(submitErrors)
-    }
+    setErrors(submitErrors)
+    return _.isEmpty(submitErrors)
+  }
 
   const handleChange = event => {
     setNewPet({

@@ -55,6 +55,7 @@ const IndividualPetShowContainer = (props) => {
             <AdoptionForm 
               setShowForm={setShowForm}
               showForm={showForm}
+              pet={individualPet}
             />
           </div>
       </Fragment>

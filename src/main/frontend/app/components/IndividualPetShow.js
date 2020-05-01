@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import AdoptionForm from "./AdoptionForm"
 
 const IndividualPetShow = (props) => {
   let pet = props.pet

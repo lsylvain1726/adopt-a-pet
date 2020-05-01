@@ -64,7 +64,6 @@ public class SurrenderPet {
 
   @Column(name="application_status")
   private String applicationStatus;
-
 }
 
 
