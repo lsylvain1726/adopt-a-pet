@@ -1,9 +1,11 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import AdoptablePetsShow from "./AdoptablePetsShow"
+import NotFound from "./NotFound"
 
 const AdoptablePetsShowContainer = (props) => {
 
   const [adoptablePets, setAdoptablePets] = useState([])
+  const [notFound, setNotFound] = useState(false)
   const petType = props.match.params.type
 
   useEffect(() => {
@@ -22,6 +24,7 @@ const AdoptablePetsShowContainer = (props) => {
       setAdoptablePets(body)
     })
     .catch(error => {
+      setNotFound(true)
       error => console.error(`Error in fetch: ${error.message}`)
     })
   }, [petType])
@@ -51,23 +54,29 @@ const AdoptablePetsShowContainer = (props) => {
   } else {
     imageClassHeader = ""
   }
-  
-  return(
-    <Fragment>
-     <div className={`wrapper-interior-header wrapper-${imageClassHeader}`}>
-      <div className="row">
-        <div className="small-12 columns">
-          <h1 className="pet-header-title">Meet Our {petType}s</h1>
-        </div>
-      </div>
-      </div>
-      <div className="wrapper-pettypes">
-        <div className="row">
-        {listAdoptablePets}
-        </div>
-      </div>
-    </Fragment>
-  )
+
+  if(notFound === false) {
+    return (
+      <Fragment>
+        <div className={`wrapper-interior-header wrapper-${imageClassHeader}`}>
+          <div className="row">
+            <div className="small-12 columns">
+              <h1 className="pet-header-title">Meet Our {petType}s</h1>
+            </div>
+          </div>
+          </div>
+          <div className="wrapper-pettypes">
+            <div className="row">
+            {listAdoptablePets}
+            </div>
+          </div>
+      </Fragment>
+    )
+  } else {
+    return(
+      <NotFound />
+    )
+  }
 }
 
 export default AdoptablePetsShowContainer

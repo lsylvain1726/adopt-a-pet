@@ -1,11 +1,13 @@
 import React, {useState, useEffect, Fragment} from 'react'
-import { Redirect } from "react-router-dom"
 import IndividualPetShow from "./IndividualPetShow"
+import AdoptionForm from "./AdoptionForm"
+import NotFound from "./NotFound"
 
 const IndividualPetShowContainer = (props) => {
 
   const [individualPet, setIndividualPet] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [notFound, setNotFound] = useState(false)
   const [showForm, setShowForm] = useState(false)
 
   const petId = props.match.params.id
@@ -27,36 +29,42 @@ const IndividualPetShowContainer = (props) => {
       setIndividualPet(body)
     })
     .catch(error => {
-      setShouldRedirect(true)
+      setNotFound(true)
     })
   }, {})
-
-  if(shouldRedirect) {
-    return <Redirect to="/pets" />
-  }
 
   let adoptMeClicked = () => {
     setShowForm(true)
   }
 
-  return(
-    <div>
+  if(notFound === false) {
+    return(
       <Fragment>
-        <div className={`wrapper-interior-header wrapper-interior-animal`}>
-          <div className="row">
-            <div className="small-12 columns">
-              <h1 className="pet-header-title">Meet {individualPet.name}</h1>
+          <div className={`wrapper-interior-header wrapper-interior-animal`}>
+            <div className="row">
+              <div className="small-12 columns">
+                <h1 className="pet-header-title">Meet {individualPet.name}</h1>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="wrapper-individual-pet">
-          <IndividualPetShow
-            pet={individualPet}
-          />
-        </div>
-    </Fragment>
-    </div>
-  )
+          <div className="wrapper-individual-pet">
+            <IndividualPetShow
+              pet={individualPet}
+              adoptMeClicked={adoptMeClicked}
+            />
+            <AdoptionForm 
+              setShowForm={setShowForm}
+              showForm={showForm}
+            />
+          </div>
+      </Fragment>
+    )
+  } else {
+    return (
+      <NotFound />
+    )
+  }
+
 }
 
 export default IndividualPetShowContainer

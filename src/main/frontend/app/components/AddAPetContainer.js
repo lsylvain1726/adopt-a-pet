@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import AddAPetForm from "./AddAPetForm"
 
 const AddAPetContainer = props => {
-  const [pet, setPet] = useState([])
   const [showForm, setShowForm] = useState(true)
+  const [message, setMessage] = useState("")
 
   const addNewForm = formPayload => {
     fetch(`/api/v1/surrender_pets`, {
@@ -22,6 +22,8 @@ const AddAPetContainer = props => {
     })
     .then(response => {
       response.json()
+      setShowForm(false)
+      setMessage("Thank you for your form submission. Your surrender request is in process and someone from our team will reach out to you shortly")
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
@@ -31,6 +33,7 @@ const AddAPetContainer = props => {
       addNewForm={addNewForm} 
       setShowForm={setShowForm}
       showForm={showForm}
+      message={message}
     />
   )
 }

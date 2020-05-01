@@ -2,7 +2,6 @@ package com.launchacademy.javaspringadoptapet.controllers.api.v1;
 
 import com.launchacademy.javaspringadoptapet.models.AdoptablePet;
 import com.launchacademy.javaspringadoptapet.repositories.AdoptablePetRepository;
-import java.util.Optional;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,11 +44,19 @@ public class AdoptablePetRestController {
 
   @GetMapping("{type}")
   public Iterable<AdoptablePet> listAdoptablePetsByType(@PathVariable String type) {
-    return adoptablePetRepo.findAllBytype(type);
+    if(adoptablePetRepo.findAllBytype(type).isEmpty()){
+      throw new UrlNotFoundException();
+    } else {
+      return adoptablePetRepo.findAllBytype(type);
+    }
   }
 
   @GetMapping("{type}/{id}")
-  public AdoptablePet getAdoptablePet(@PathVariable Integer id) {
-    return adoptablePetRepo.findById(id).orElseThrow(() -> new UrlNotFoundException());
+  public AdoptablePet getAdoptablePet(@PathVariable Integer id, @PathVariable String type) {
+    if(adoptablePetRepo.findByTypeAndId(type, id) == null){
+      throw new UrlNotFoundException();
+    } else {
+      return adoptablePetRepo.findByTypeAndId(type, id);
+    }
   }
 }

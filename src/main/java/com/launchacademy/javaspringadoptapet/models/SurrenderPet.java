@@ -52,7 +52,6 @@ public class SurrenderPet {
   private String petName;
 
   @Column(name="pet_age")
-  @NotNull
   private Integer petAge;
 
   @Column(name="pet_image_url")
@@ -61,7 +60,6 @@ public class SurrenderPet {
   private String petImageUrl;
 
   @Column(name="vaccination_status")
-  @NotNull
   private Boolean vaccinationStatus;
 
   @Column(name="application_status")

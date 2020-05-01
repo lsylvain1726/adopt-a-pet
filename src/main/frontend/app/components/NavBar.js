@@ -1,9 +1,10 @@
 import React from 'react'
-import { Route, Link, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Link, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import PetTypesShowContainer from "./PetTypesShowContainer"
 import AdoptablePetsShowContainer from "./AdoptablePetsShowContainer"
 import IndividualPetShowContainer from "./IndividualPetShowContainer"
 import AddAPetContainer from "./AddAPetContainer"
+import NotFound from "./NotFound";
 
 const NavBar = (props) => {
   return(
@@ -36,11 +37,12 @@ const NavBar = (props) => {
       </div>
 
       <Switch>
+        <Redirect exact path="/" to="/pets" />
         <Route exact path="/pets" component={PetTypesShowContainer} />
         <Route exact path="/pets/:type" component={AdoptablePetsShowContainer} />
         <Route exact path="/pets/:animalType/:id" component={IndividualPetShowContainer}/>
         <Route exact path="/adoptions/new" component={AddAPetContainer} />
-        
+        <Route path="*" component={NotFound} />
       </Switch>
      
     </BrowserRouter>

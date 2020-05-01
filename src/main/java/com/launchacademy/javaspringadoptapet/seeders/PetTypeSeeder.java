@@ -69,13 +69,43 @@ public class PetTypeSeeder implements CommandLineRunner {
 
     AdoptablePet adoptablePetThree = new AdoptablePet();
     adoptablePetThree.setName("Zeus");
-    adoptablePetThree.setImgUrl("https://www.rd.com/wp-content/uploads/2019/11/cat-19-1024x684.jpg");
+    adoptablePetThree.setImgUrl("https://vetstreet-brightspot.s3.amazonaws.com/e1/ce/55785b3f450f83c0e9f88287006a/dog-playing-fetch-thinkstock-451915253-335lc03214.jpg");
     adoptablePetThree.setAge(2);
     adoptablePetThree.setAdoptionStatus("no");
     adoptablePetThree.setAdoptionStory("His mom is in retirement and can no longer take care of this fiesty little thing");
     adoptablePetThree.setVaccinationStatus(true);
-    adoptablePetThree.setPetType(petTypeTwo);
+    adoptablePetThree.setPetType(petTypeOne);
     adoptablePetsList.add(adoptablePetThree);
+
+    AdoptablePet adoptablePetFour = new AdoptablePet();
+    adoptablePetFour.setName("Mocha");
+    adoptablePetFour.setImgUrl("https://www.rd.com/wp-content/uploads/2019/11/cat-10-e1573844975155-1024x692.jpg");
+    adoptablePetFour.setAge(1);
+    adoptablePetFour.setAdoptionStatus("no");
+    adoptablePetFour.setAdoptionStory("Found on the streets");
+    adoptablePetFour.setVaccinationStatus(false);
+    adoptablePetFour.setPetType(petTypeTwo);
+    adoptablePetsList.add(adoptablePetFour);
+
+    AdoptablePet adoptablePetFive = new AdoptablePet();
+    adoptablePetFive.setName("Margeaux");
+    adoptablePetFive.setImgUrl("https://www.rd.com/wp-content/uploads/2019/11/cats-1-1024x683.jpg");
+    adoptablePetFive.setAge(100);
+    adoptablePetFive.setAdoptionStatus("no");
+    adoptablePetFive.setAdoptionStory("Abandoned at fire station");
+    adoptablePetFive.setVaccinationStatus(false);
+    adoptablePetFive.setPetType(petTypeTwo);
+    adoptablePetsList.add(adoptablePetFive);
+
+    AdoptablePet adoptablePetSix = new AdoptablePet();
+    adoptablePetSix.setName("Josephina");
+    adoptablePetSix.setImgUrl("https://www.rd.com/wp-content/uploads/2019/11/cat-19-1024x684.jpg");
+    adoptablePetSix.setAge(7);
+    adoptablePetSix.setAdoptionStatus("yes");
+    adoptablePetSix.setAdoptionStory("Too many sibilings, the dogs didnt like her");
+    adoptablePetSix.setVaccinationStatus(true);
+    adoptablePetSix.setPetType(petTypeTwo);
+    adoptablePetsList.add(adoptablePetSix);
 
 
     if (adoptablePetRepo.count() == 0) {

@@ -1,4 +1,6 @@
 import React, {useState, useEffect, Fragment} from "react"
+import ErrorList from "./ErrorList"
+import _ from 'lodash'
 
 const AddAPetForm = (props) => {
 
@@ -37,7 +39,7 @@ const AddAPetForm = (props) => {
   }
 
   const [newPet, setNewPet] = useState(defaultForm)
-  const [message, setMessage] = useState("")
+  const [errors, setErrors] = useState({})
   
   let typeId
   if (newPet.petTypeId === "1") {
@@ -47,6 +49,22 @@ const AddAPetForm = (props) => {
   }
 
   let petType = petTypes.find(pet => pet.id === typeId)
+
+  const validForSubmission = () => {
+    let submitErrors = {}
+    const requiredFields = ["name", "phoneNumber", "email","petName", "petAge", "petTypeId", "petImageUrl", "vaccinationStatus"]
+    requiredFields.forEach((field) => {
+      if (newPet[field].trim() === "" || newPet[field] === null) {
+        submitErrors = {
+          ...submitErrors,
+          [field]: "is blank"
+        }
+      }
+    })
+  
+      setErrors(submitErrors)
+      return _.isEmpty(submitErrors)
+    }
 
   const handleChange = event => {
     setNewPet({
@@ -60,7 +78,6 @@ const AddAPetForm = (props) => {
     event.preventDefault()
     const isVaccinated = (newPet.vaccinationStatus === "true")
 
-
     let formPayload = {
       name: newPet.name,
       phoneNumber: newPet.phoneNumber,
@@ -69,14 +86,14 @@ const AddAPetForm = (props) => {
       petAge: newPet.petAge,
       petType: petType,
       petImageUrl: newPet.petImageUrl,
-      vaccinationStatus: isVaccinated,
+      vaccinationStatus: newPet.vaccinationStatus, 
       applicationStatus: "pending"
     }
-        
-    props.addNewForm(formPayload)
-    props.setShowForm(false)
-    setNewPet(defaultForm)
-    // setMessage("Thank you for your form submission. Your surrender request is in process and someone from our team will reach out to you shortly")
+   
+    if (validForSubmission()) {
+      props.addNewForm(formPayload)
+      setNewPet(defaultForm)
+    }
   }
 
   let showHideForm
@@ -87,7 +104,7 @@ const AddAPetForm = (props) => {
   }
 
   let hideMessage
-  if(message) {
+  if(props.message) {
     hideMessage = "show"
   } else {
     hideMessage = "hide"
@@ -119,7 +136,7 @@ const AddAPetForm = (props) => {
         <div className="row">
           <div className="small-12 columns">
             <div className="form-submission-message">
-              {message}
+              {props.message}
             </div>
           </div>
         </div>
@@ -128,6 +145,7 @@ const AddAPetForm = (props) => {
       <div className={`add-a-pet-form row ${showHideForm}`}>
         <div className="small-12 columns">
         <form onSubmit={handleSubmit}>
+          <ErrorList errors={errors} />
           <div className="row">
             <div className="small-12 medium-6 columns">
               <label htmlFor="name">Name</label>
@@ -152,7 +170,7 @@ const AddAPetForm = (props) => {
             <div className="small-12 medium-6 columns">
               <label htmlFor="petTypeId">Pet Type</label>
               <select name="petTypeId" id="petTypeId" onChange={handleChange} value={newPet.petTypeId}>
-                <option value="">-</option>
+                <option value="-">-</option>
                 <option value="1">Dog</option>
                 <option value="2">Cat</option>
               </select>
@@ -164,6 +182,7 @@ const AddAPetForm = (props) => {
             <div className="small-12 medium-6 columns">
               <label htmlFor="vaccinationStatus">Vaccination Status</label>
               <select name="vaccinationStatus" id="vaccinationStatus" onChange={handleChange} value={newPet.vaccinationStatus}>
+                <option value="-">-</option>
                 <option value="true">Vaccinated</option>
                 <option value="false">Not vaccinated</option>
               </select>

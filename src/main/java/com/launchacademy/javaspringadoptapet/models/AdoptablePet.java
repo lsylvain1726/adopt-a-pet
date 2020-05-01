@@ -1,6 +1,5 @@
 package com.launchacademy.javaspringadoptapet.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,9 +43,11 @@ public class AdoptablePet {
   private String imgUrl;
 
   @Column(name="age")
+  @NotNull
   private Integer age;
 
   @Column(name="vaccination_status")
+  @NotNull
   private Boolean vaccinationStatus;
 
   @Column(name="adoption_story")
